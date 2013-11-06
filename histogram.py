@@ -10,7 +10,7 @@ Options:
   -h --help                 Show this screen.
   -n --num_bins=<num_bins>  Number of bins [default: 80]
   -o --output=<output>      Save the chart to this file
-  -s --show                 Show the chart
+  -s --no_show              Don't show the chart
   -r --remove_outliers      Disconsider values that are more than two stddev from the avg.
   -f --force                Overwrite output file
 """
@@ -57,7 +57,7 @@ if __name__ == "__main__":
     filename = arguments['<input>']
     num_bins = int(arguments['--num_bins'])
     output = arguments['--output']
-    show = arguments['--show']
+    no_show = arguments['--no_show']
     force = arguments['--force']
     remove_outliers = arguments['--remove_outliers']
 
@@ -68,5 +68,5 @@ if __name__ == "__main__":
             plt.savefig(output, dpi=400, bbox_inches='tight')
         else:
             print "File exists:", output
-    if show:
+    if not no_show:
         plt.show()
